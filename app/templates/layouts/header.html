@@ -1,0 +1,24 @@
+
+<a href="#main-content" class="p-link--skip" id="go-to-main-content">Pule para o conteúdo principal</a>
+
+<header class="p-navigation is-dark is-sticky" id="navigation">
+    <div class="p-navigation__row">
+        <div class="p-navigation__banner">
+            <div class="p-navigation__logo"><a href="{{ url_for('app_route_home') }}" class="p-navigation__item"><img src="#" alt="Logo e Página Inicial" class="p-navigation__image" style="height:1.5rem;"></a></div>
+            <a href="#navigation" class="p-navigation__toggle--open" title="Exibir o menu">Menu</a>
+            <a href="#navigation-closed" class="p-navigation__toggle--close" title="Fechar o menu">Fechar</a>
+        </div>
+        <nav class="p-navigation__nav" aria-label="Menu principal">
+            <ul class="p-navigation__items">
+              {#<li class="p-navigation__item{% if request.path == '/' %} is-selected{% endif %}"><a href="{{ url_for('app_route_home') }}" class="p-navigation__link">Página inicial</a></li>#}
+                <li class="p-navigation__item{% if request.path == '/gallery' %} is-selected{% endif %}"><a href="{{ url_for('app_route_gallery') }}" class="p-navigation__link">Galeria</a></li>
+                <li class="p-navigation__item{% if request.path == '/about' %} is-selected{% endif %}"><a href="{{ url_for('app_route_about') }}" class="p-navigation__link">Sobre</a></li>
+                <li class="p-navigation__item{% if request.path == '/contact' %} is-selected{% endif %}"><a href="{{ url_for('app_route_contact') }}" class="p-navigation__link">Contato</a></li>
+            </ul>
+            <ul class="p-navigation__items">
+                <li class="p-navigation__item"><a href="#" class="p-navigation__link">Whatsapp</a></li>
+                <li class="p-navigation__item"><a href="#" class="p-navigation__link">Telefone</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

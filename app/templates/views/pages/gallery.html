@@ -1,0 +1,51 @@
+{% extends 'layouts/app.html' %}
+{% block block %}
+
+{% block content %}
+<div class="p-strip is-shallow">
+    <div class="row">
+        <aside class="col-3">
+            <nav class="p-side-navigation is-sticky" id="side-navigation-drawer" aria-label="side">
+                <a href="#side-navigation-drawer" class="p-side-navigation__toggle js-drawer-toggle" aria-controls="side-navigation-drawer">Unidades</a>
+                <div class="p-side-navigation__overlay js-drawer-toggle" aria-controls="side-navigation-drawer"></div>
+                <div class="p-side-navigation__drawer">
+                    <div class="p-side-navigation__drawer-header">
+                        <a href="#" class="p-side-navigation__toggle--in-drawer js-drawer-toggle" aria-controls="side-navigation-drawer">Unidades</a>
+                    </div>
+                    <ul class="p-side-navigation__list">
+                        <li class="p-side-navigation__item--title"><span class="p-side-navigation__text">Veja fotos por Unidades</span></li>
+                        <li class="p-side-navigation__item">
+                            <a href="{{ request.path }}?u=all" class="p-side-navigation__link"{% if request.args.get('u') == 'all' or request.args.get('u') == None %} aria-current="page"{% endif %}>Todas as Unidades</a>
+                            {% for key in context.pics %}
+                            <a href="{{ request.path }}?u={{ key }}" class="p-side-navigation__link"{% if request.args.get('u') == key %} aria-current="page"{% endif %}>{{ context.pics_l_names[key] }}</a>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        <main class="col-9" id="main-content">
+            {% if context.imgs %}
+            <div class="row">
+                {% for img in context.imgs %}
+                <div class="col-3">
+                    <div class="u-embedded-media">
+                        <img src="{{ img }}" alt="There is no description" class="u-embedded-media__element" />
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="row">
+                <div class="col-12 u-align-text--center">
+                    <h1>Ops!</h1>
+                    <h2>Eu ainda não adicionei fotos aqui</h2>
+                </div>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+</div>
+
+{% endblock content %}
+{% endblock block %}
