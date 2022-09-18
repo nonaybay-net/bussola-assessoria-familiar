@@ -21,7 +21,8 @@ def create_app(tc=None):
     # routes and pages
     @app.route('/')
     def app_route_home():
-        return render_template('views/pages/home.html')
+        context['title'] = 'Página inicial'
+        return render_template('views/pages/home.html', context=context)
 
     @app.route('/gallery', methods=['GET'])
     def app_route_gallery():
@@ -39,16 +40,18 @@ def create_app(tc=None):
             image = context['pics'][requested]
 
         context['imgs'] = image
-
+        context['title'] = 'Galeria'
         return render_template('views/pages/gallery.html', context=context)
 
     @app.route('/about')
     def app_route_about():
-        return render_template('views/pages/home.html')
+        context['title'] = 'Sobre'
+        return render_template('views/pages/about.html', context=context)
 
     @app.route('/contact')
     def app_route_contact():
-        return render_template('views/pages/home.html')
+        context['title'] = 'Contato'
+        return render_template('views/pages/home.html', context=context)
 
     # errors
 
