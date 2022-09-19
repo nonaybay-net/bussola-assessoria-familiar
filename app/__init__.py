@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request
+from random import shuffle
 from .values import context
 
 
@@ -17,6 +18,18 @@ def create_app(tc=None):
         pass
 
     # jinja custom filters
+    @app.template_filter('randlist')
+    def filter_randlist(seq, re=5):
+        r = list(seq)
+
+        if (re >= 0):
+            shuffle(r)
+
+            return filter_randlist(r, (re - 1))
+        elif (re == 0):
+            return r
+        else:
+            return seq
 
     # routes and pages
     @app.route('/')
