@@ -18,6 +18,10 @@ pictures_names = {
     'sao_roque': 'São Roque',
 }
 
+favicon_srcs = ['apple-touch-icon', 'icon',]
+favicon_sizes = [
+    '16', '32', '57', '60', '72', '76', '96', '114', '120', '144', '152', '180', '192',
+]
 
 
 owner_name = 'Marcelo Paulino da Silva'
@@ -59,6 +63,8 @@ context = {
     'owner'             :   proj_owner,
     'author'            :   proj_author,
     'icon'              :   proj_favicon,
+    'icon_srcs'         :   favicon_srcs,
+    'icon_sizes'        :   favicon_sizes,
 
     # pictures
     'pics': pictures,

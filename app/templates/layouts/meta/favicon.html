@@ -1,0 +1,4 @@
+
+{%- for source in context.icon_srcs -%}{%- for size in context.icon_sizes %}
+    <link rel="{{ source }}"{% if source == 'icon' %} type="image/png"{% endif %} sizes="{{ size }}x{{ size }}" href="https://ik.imagekit.io/czdfjw711v/755f56a0/tr:w-{{ size }}/1ec23fe7_3Sj0wzJrm.png" />
+{%- endfor -%}{%- endfor -%}

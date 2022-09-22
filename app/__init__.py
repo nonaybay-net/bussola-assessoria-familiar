@@ -66,6 +66,11 @@ def create_app(tc=None):
         context['title'] = 'Contato'
         return render_template('views/pages/home.html', context=context)
 
+    @app.route('/comming-soon')
+    def app_route_update():
+        context['title'] = 'Atualizações Futuras'
+        return render_template('views/pages/updates.html', context=context)
+
     # errors
 
     # redirects

@@ -1,11 +1,11 @@
 <!doctype html>
-<html>
-    <head>
-        {% include 'layouts/meta/include.html' %}
-    </head>
-    <body>
-        {% include 'layouts/header.html' %}
-        {% block body -%}{%- endblock body %}
-        {% include 'layouts/footer.html' %}
-    </body>
+<html lang="{{ context.lcode }}">
+  <head>
+    {%- include 'layouts/meta/include.html' %}
+  </head>
+  <body>
+    {%- include 'layouts/header.html' -%}
+    {%- block body -%}{%- endblock body -%}
+    {%- include 'layouts/footer.html' %}
+  </body>
 </html>
