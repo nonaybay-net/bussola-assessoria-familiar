@@ -24,6 +24,11 @@
             </li>
           </ul>
           <ul class="p-navigation__items">
+            {% if request.path == '/comming-soon' %}
+            <li class="p-navigation__item is-selected">
+              <a class="p-navigation__link">Atualizações</a>
+            </li>
+            {% endif %}
             <li class="p-navigation__item">
               <a class="p-navigation__link" target="_blank" href="https://wa.me/55{{ context.o_phone }}">WhatsApp</a>
             </li>

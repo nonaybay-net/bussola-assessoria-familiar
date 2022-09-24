@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="{{ context.lcode }}">
+<html prefix="og: http://ogp.me/ns#" lang="{{ context.lcode }}">
   <head>
     {%- include 'layouts/meta/include.html' %}
+    {%- block src_sty -%}{{ stylesheet }}{%- endblock src_sty -%}
   </head>
   <body>
     {%- include 'layouts/header.html' -%}

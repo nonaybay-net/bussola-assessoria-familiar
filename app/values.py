@@ -5,17 +5,10 @@ pictures = {
         'https://ik.imagekit.io/czdfjw711v/755f56a0/62226cd6/tr:w-620/0003_6zA-AdIe2.webp',
         'https://ik.imagekit.io/czdfjw711v/755f56a0/62226cd6/tr:w-620/0004_6iM0TNYsg.webp',
     ],
-
-    'itapecerica_da_serra': [],
-    'santa_isabel': [],
-    'sao_roque': [],
 }
 
 pictures_names = {
     'ibiuna': 'Ibiúna',
-    'itapecerica_da_serra': 'Itapecerica da Serra',
-    'santa_isabel': 'Santa Isabel',
-    'sao_roque': 'São Roque',
 }
 
 favicon_srcs = ['apple-touch-icon', 'icon',]

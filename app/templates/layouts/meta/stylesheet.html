@@ -1,2 +1,3 @@
 
     <link rel="stylesheet" type="text/css" href="https://assets.ubuntu.com/v1/vanilla-framework-version-3.7.1.min.css" />
+    {% if request.path == '/' -%}<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.min.css') }}" />{%- endif -%}
