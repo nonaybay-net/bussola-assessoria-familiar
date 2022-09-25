@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from random import shuffle
 from .values import context
 
@@ -74,5 +74,10 @@ def create_app(tc=None):
     # errors
 
     # redirects
+
+    # routes from static
+    @app.route('/sitemap.xml')
+    def serving_static():
+        return send_from_directory(app.static_folder, request.path[1:])
 
     return app
