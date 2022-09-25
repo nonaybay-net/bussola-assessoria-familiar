@@ -19,7 +19,7 @@ favicon_sizes = [
 
 owner_name = 'Marcelo Paulino da Silva'
 owner_doc = 'CRTH-BR 12699'
-owner_email = None
+owner_email = 'bafmps@proton.me'
 owner_phone = '11932983760'
 dev_name = 'Rafael Venancio'
 dev_doc = None
