@@ -1,11 +1,17 @@
 import os
 from flask import Flask, render_template, request, send_from_directory
 from random import shuffle
+
+from app.utilities import create_hash_w_time, jinja_escape_hash, jinja_random_list
 from .values import context
+from hashlib import md5
+
+
+static_url_path = '/{}'.format(create_hash_w_time('static'))
 
 
 def create_app(tc=None):
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__, instance_relative_config=True, static_url_path=static_url_path)
 
     if tc is None:
         app.config.from_pyfile('config.py', silent=True)
@@ -17,7 +23,19 @@ def create_app(tc=None):
     except OSError:
         pass
 
-    # jinja custom filters
+    # jinja-filters
+    @app.template_filter('random_list')
+    def filter_random_list(sequence, repeats=1):
+        return jinja_random_list(sequence, repeats)
+
+
+    @app.template_filter('escape_hash')
+    def filter_escape_hash(shift):
+        return jinja_escape_hash(shift)
+
+    # end of jinja-filters
+
+
     @app.template_filter('randlist')
     def filter_randlist(seq, re=5):
         r = list(seq)
@@ -30,6 +48,14 @@ def create_app(tc=None):
             return r
         else:
             return seq
+
+    @app.template_filter('ha')
+    def filter_ha(entry):
+        a = entry
+        a = str(a)
+        a = md5(a.encode()).hexdigest()
+
+        return a
 
     # routes and pages
     @app.route('/')

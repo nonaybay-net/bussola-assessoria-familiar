@@ -27,7 +27,7 @@
         <main class="col-9" id="main-content">
             {% if context.imgs %}
             <div class="row">
-                {% for img in context.imgs | randlist %}
+                {% for img in context.imgs | random_list %}
                 <div class="col-3">
                     <div class="u-embedded-media">
                         <img src="{{ img }}" alt="There is no description" class="u-embedded-media__element" />
