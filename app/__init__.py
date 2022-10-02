@@ -113,10 +113,6 @@ def create_app(tc=None):
         context['title'] = 'Atualizações Futuras'
         return render_template('views/pages/updates.html', context=context)
 
-    @app.route('/dedicated')
-    def app_ded():
-        return render_template('p.html')
-
     # errors
 
     # redirects
