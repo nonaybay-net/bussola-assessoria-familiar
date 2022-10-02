@@ -1,5 +1,4 @@
 import os
-from app.debug_log import log_msg
 from flask import Flask, render_template, request, send_from_directory
 from flask_minify import Minify
 from random import shuffle
@@ -10,36 +9,29 @@ from hashlib import md5
 
 
 os.system('clear')
-log_msg('hashing static url')
+print('Initializing the App')
+
 static_url_path = '/{}'.format(create_hash_w_time('static'))
 
 
-log_msg('init of create_app function')
 def create_app(tc=None):
-    log_msg('creating the instance of app')
     app = Flask(__name__, instance_relative_config=True, static_url_path=static_url_path)
-    log_msg('telling to flask to minify')
-    Minify(app=app)
-    log_msg('removing whitespaces on jinja')
     app.jinja_env.trim_blocks = True
     app.jinja_env.lstrip_blocks = True
 
-    log_msg('checking config')
+    Minify(app=app)
+
+
     if tc is None:
-        log_msg('test_config is None')
         app.config.from_pyfile('config.py', silent=True)
     else:
-        log_msg('test_config is something')
         app.config.from_mapping(tc)
 
     try:
-        log_msg('trying to create the instance path')
         os.makedirs(app.instance_path)
     except OSError:
-        log_msg('instance path created')
         pass
 
-    log_msg('creating jinja filters')
     # jinja-filters
     @app.template_filter('random_list')
     def filter_random_list(sequence, repeats=1):
@@ -74,10 +66,8 @@ def create_app(tc=None):
 
         return a
 
-    log_msg('jinja filters has been created')
 
     # routes and pages
-    log_msg('ROUTES AND PAGES')
     @app.route('/')
     def app_route_home():
         context['title'] = 'Página inicial'
@@ -135,7 +125,7 @@ def create_app(tc=None):
     @app.errorhandler(404)
     def app_route_error_404(error):
         context['title'] = 'Página não encontrada'
-        return render_template('404.html', context=context)
+        return render_template('404.html', context=context), 404
 
     # routes from static
     @app.route('/sitemap.xml')
