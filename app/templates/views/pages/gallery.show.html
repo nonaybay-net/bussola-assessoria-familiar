@@ -1,0 +1,25 @@
+{% extends 'layouts/app.html' %}
+{% block content %}
+<section class="p-strip--light is-shallow">
+  <div class="u-fixed-width">
+    <nav class="p-breadcrumbs" aria-label="breadcrumbs">
+      <ol class="p-breadcrumbs__items u-no-margin--bottom">
+        <li class="p-breadcrumbs__item">Bússola Assessoria Familiar</li>
+        <li class="p-breadcrumbs__item"><a href="{{ url_for('app_route_gallery') }}">Galeria</a></li>
+        <li class="p-breadcrumbs__item">{{ context.pics_l_names[context.u] }}</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+<section class="p-strip is-deep">
+  <div class="row">
+    <h1 class="">Clínicas em {{ context.pics_l_names[context.u] }}</h1>
+    {% for img in context.imgs | random_list %}
+    <div class="col-4">
+      <div class="u-embedded-media"><img src="{{ img }}" alt="" class="u-embedded-media__element"></div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock content %}

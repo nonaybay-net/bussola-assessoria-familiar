@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, send_from_directory
+from flask_minify import Minify
 from random import shuffle
 
 from app.utilities import create_hash_w_time, jinja_escape_hash, jinja_random_list
@@ -12,6 +13,9 @@ static_url_path = '/{}'.format(create_hash_w_time('static'))
 
 def create_app(tc=None):
     app = Flask(__name__, instance_relative_config=True, static_url_path=static_url_path)
+    Minify(app=app)
+    app.jinja_env.trim_blocks = True
+    app.jinja_env.lstrip_blocks = True
 
     if tc is None:
         app.config.from_pyfile('config.py', silent=True)
@@ -82,6 +86,18 @@ def create_app(tc=None):
         context['title'] = 'Galeria'
         return render_template('views/pages/gallery.html', context=context)
 
+    @app.route('/gallery/ibiuna')
+    def app_route_gallery_p1():
+        image = []
+        for val in context['pics']['ibiuna']:
+            image.append(val)
+
+        context['title'] = 'Ibiúna | Galeria'
+        context['imgs'] = image
+        context['u'] = 'ibiuna'
+
+        return render_template('views/pages/gallery.show.html', context=context)
+
     @app.route('/about')
     def app_route_about():
         context['title'] = 'Sobre'
@@ -97,9 +113,17 @@ def create_app(tc=None):
         context['title'] = 'Atualizações Futuras'
         return render_template('views/pages/updates.html', context=context)
 
+    @app.route('/dedicated')
+    def app_ded():
+        return render_template('p.html')
+
     # errors
 
     # redirects
+    @app.errorhandler(404)
+    def app_route_error_404(error):
+        context['title'] = 'Página não encontrada'
+        return render_template('404.html', context=context)
 
     # routes from static
     @app.route('/sitemap.xml')

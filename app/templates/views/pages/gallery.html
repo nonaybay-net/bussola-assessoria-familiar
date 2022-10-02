@@ -4,7 +4,7 @@
 {% block content %}
 <div class="p-strip is-shallow">
     <div class="row">
-        <aside class="col-3">
+        <aside class="col-4">
             <nav class="p-side-navigation is-sticky" id="side-navigation-drawer" aria-label="side">
                 <a href="#side-navigation-drawer" class="p-side-navigation__toggle js-drawer-toggle" aria-controls="side-navigation-drawer">Unidades</a>
                 <div class="p-side-navigation__overlay js-drawer-toggle" aria-controls="side-navigation-drawer"></div>
@@ -24,11 +24,18 @@
                 </div>
             </nav>
         </aside>
-        <main class="col-9" id="main-content">
+        <main class="col-8" id="main-content">
             {% if context.imgs %}
             <div class="row">
+              {% for key in context.pics %}
+              {% if request.args.get('u') == key %}
+              <div class="col-9">
+                <h1 class="p-heading--2">Clínas em {{ context.pics_l_names[key] }}</h1>
+              </div>
+              {% endif %}
+              {% endfor %}
                 {% for img in context.imgs | random_list %}
-                <div class="col-3">
+                <div class="col-4">
                     <div class="u-embedded-media">
                         <img src="{{ img }}" alt="There is no description" class="u-embedded-media__element" />
                     </div>

@@ -5,10 +5,16 @@ pictures = {
         'https://ik.imagekit.io/czdfjw711v/755f56a0/62226cd6/tr:w-620/0003_6zA-AdIe2.webp',
         'https://ik.imagekit.io/czdfjw711v/755f56a0/62226cd6/tr:w-620/0004_6iM0TNYsg.webp',
     ],
+    'santa_isabel': [],
 }
 
 pictures_names = {
     'ibiuna': 'Ibiúna',
+    'santa_isabel': 'Santa Isabel',
+}
+
+pictures_city_brand = {
+    'ibiuna': 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Brasao_Ibiuna_SaoPaulo_Brasil.jpg',
 }
 
 favicon_srcs = ['apple-touch-icon', 'icon',]
@@ -62,4 +68,5 @@ context = {
     # pictures
     'pics': pictures,
     'pics_l_names': pictures_names,
+    'pics_c_brand': pictures_city_brand,
 }

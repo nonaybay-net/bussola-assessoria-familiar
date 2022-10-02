@@ -2,3 +2,5 @@ pip
 
 Flask
 gunicorn
+
+Flask-Minify

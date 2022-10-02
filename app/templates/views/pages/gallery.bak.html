@@ -1,0 +1,25 @@
+{% extends 'layouts/app.html' %}
+{% block block %}
+{% block content %}
+<section class="p-strip is-shallow">
+  <div class="row">
+    <h1 class="u-no-margin--bottom">Galeria de Imagens</h1>
+  </div>
+</section>
+
+<section class="p-strip u-no-padding--top">
+  <div class="row u-equal-height" style="padding-top:1rem">
+    {% for key in context.pics %}
+    <div class="col-4 p-card">
+      <div class="u-vertically-center u-align--center">
+        <a href="{{ request.path }}/{{ key }}">
+          <img src="{{ context.pics_c_brand[key] }}" alt="{{ context.pics_l_names[key] }}" width="160" style="min-height: 175px" />
+        </a>
+      </div>
+      <p class="p-card__content p-heading--3 u-align-text--center"><a href="{{ request.path }}/{{ key }}">{{ context.pics_l_names[key] }}</a></p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}
+{% endblock block %}
